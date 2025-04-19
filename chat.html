@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-header {
+      background: #060c06;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .chat-messages {
+      flex-grow: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f9f9f9;
+    }
+
+    .chat-messages .message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      max-width: 70%;
+    }
+
+    .message.sent {
+      background: #000000;
+      color: #fff;
+      margin-left: auto;
+    }
+
+    .message.received {
+      background: #e4e4e4;
+      color: #000;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      background: #f4f4f4;
+      border-top: 1px solid #ccc;
+    }
+
+    .chat-input input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .chat-input button {
+      padding: 10px 15px;
+      margin-left: 10px;
+      border: none;
+      background-color: #000000;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #0db615;
+    }
+
+    .instructions {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .instructions strong {
+      color: #007BFF;
+    }
+
+    .instructions ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Instruction Section -->
+  <div class="chat-container">
+    <div class="chat-header">Chat with Us</div>
+
+    <div class="instructions">
+      <p><strong>How to Use:</strong></p>
+      <ul>
+        <li>Use the keyword <strong>"order"</strong> to place an order.</li>
+        <li>Use the keyword <strong>"suggestion"</strong> to share your ideas or feedback.</li>
+        <li>Use the keyword <strong>"report"</strong> to report an issue.</li>
+        <li>For general inquiries, type your message, and we’ll assist you.</li>
+      </ul>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <!-- Chat messages will appear here -->
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="messageInput" placeholder="Type your message here...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatMessages = document.getElementById('chatMessages');
+    const messageInput = document.getElementById('messageInput');
+
+    function displayMessage(message, type) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message', type === 'sent' ? 'sent' : 'received');
+      messageElement.textContent = message;
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function respondToMessage(userMessage) {
+      let response;
+      if (userMessage.toLowerCase().includes('order')) {
+        response = "Please share the details, including the product name and other necessary information, to place your order.";
+      } else if (userMessage.toLowerCase().includes('suggestion')) {
+        response = "Thanks for sharing your suggestion! We will surely consider implementing it. If possible, could you provide more details about the artist and the products?";
+      } else if (userMessage.toLowerCase().includes('report')) {
+        response = "Thank you for bringing this to our attention. We will inspect it and take the necessary action.";
+      } else {
+        response = "Thanks for sharing! Keep up the good work in promoting sustainability.";
+      }
+      displayMessage(response, 'received');
+    }
+
+    function sendMessage() {
+      const messageText = messageInput.value.trim();
+
+      if (messageText) {
+        displayMessage(messageText, 'sent');
+        messageInput.value = '';
+
+        // Simulate a response after 1 second
+        setTimeout(() => {
+          respondToMessage(messageText);
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>

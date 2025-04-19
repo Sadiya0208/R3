@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>R3 Trade</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <script src="navbar.js"></script>
+  <style>
+    .menu-toggle {
+      position: absolute;
+      top: 130px;
+      left: 20px;
+      background: #ffa500;
+      padding: 8px 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 4px;
+      z-index: 10001;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .menu-toggle.hide {
+      display: none !important;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 250px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      transition: left 0.3s ease-in-out;
+      padding: 20px;
+    }
+
+    .side-menu.show {
+      left: 0;
+    }
+
+    .side-menu .close-btn {
+      color: white;
+      background: none;
+      border: none;
+      font-size: 30px;
+      cursor: pointer;
+      text-align: right;
+    }
+
+    .side-menu .menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu .menu-list li {
+      margin: 20px 0;
+    }
+
+    .side-menu .menu-list a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .side-menu .menu-list a:hover {
+      color: #ffa500;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="floating-account-icon">
+      <a href="account.html" title="My Account">
+        <i class="fas fa-user-circle"></i>
+      </a>
+    </div>
+
+    <div class="logo">
+      <img src="newlogo.jpg" alt="Barter Exchange Logo" />
+      <span class="menu-toggle">&#9776;</span>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="indexnew.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li>
+          <a href="wishlist.html" class="wishlist-icon">
+            <i class="fa-regular fa-heart"></i>
+          </a>
+        </li>
+        <li><a href="card.html">Cart</a></li>
+        <li id="postMenuDesktop" style="display: none;"><a href="post.html">Post</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." id="search" autocomplete="off"/>
+        <button type="button" id="searchButton">Search</button>
+        <div class="dropdown" id="dropdown">
+          <div class="default-options">
+            <div><a href="xchange.html">Exchange Section</a></div>
+            <div><a href="sell.html">Sell Section</a></div>
+            <div><a href="recycle.html">
+              Upcycle Section <span class="popular-badge">Most Popular</span>
+            </a></div>
+          </div>
+          <div class="search-suggestions"></div>
+        </div>
+      </div>
+      <a href="login.html" class="login-btn">Login</a>
+    </div>
+  </header>
+
+  <!-- Mobile Side Menu -->
+  <div id="mobileMenu" class="side-menu">
+    <button id="closeMenu" class="close-btn"><i class="fas fa-times"></i></button>
+    <ul class="menu-list" id="mobileMenuList">
+      <li><a href="indexnew.html">Home</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="card.html">Cart</a></li>
+      <li id="postMenuMobile" style="display: none;"><a href="post.html">Post</a></li>
+    </ul>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Recycle karo, Duniya Badlo!</h2>
+      <p>Join our community where you can trade and recycle items for a sustainable future.</p>
+      <a href="srevice.html" class="btn">Get Started</a>
+      <a href="Donate.html" class="btn">Donate</a>
+    </div>
+  </section>
+
+  <div class="slider-container">
+    <div class="image-slider" id="slider">
+      <a href="recycle.html" class="slide"><img src="item4.jpeg" alt="Tyre planter"/></a>
+      <a href="recycle.html" class="slide"><img src="item5.jpeg" alt="Can Table"/></a>
+      <a href="sell.html" class="slide"><img src="perfume.jpg" alt="Denim Hanger"/></a>
+      <a href="xchange.html" class="slide"><img src="bag.jpg" alt="Sewing Machine"/></a>
+      <a href="sell.html" class="slide"><img src="bag2.jpg" alt="Wall Clock"/></a>
+      <a href="xchange.html" class="slide"><img src="type.jpg" alt="Cement"/></a>
+      <a href="sell.html" class="slide"><img src="bag3.jpg" alt="Cement"/></a>
+      <a href="xchange.html" class="slide"><img src="phone.jpg" alt="Cement"/></a>
+      <a href="sell.html" class="slide"><img src="cloth.jpg" alt="Cement"/></a>
+      <a href="recycle.html" class="slide"><img src="jens.jpg" alt="Cement"/></a>
+    </div>
+    <div class="nav-buttons">
+      <button class="prev" onclick="scrollSlider(-1)">&#10094;</button>
+      <button class="next" onclick="scrollSlider(1)">&#10095;</button>
+    </div>
+  </div>
+
+ <!-- Services Section -->
+ <section class="services" >
+  <h2>Our Services</h2>
+  <div class="service-cards">
+      <div class="card card-1">
+          <h3>Exchange </h3>
+          <p>Exchange your items with others and get what you need. Exchange each kind of stuff whether its a raw material or furnished product. whether its pretty old or only used some times only.</p>
+          <a href="xchange.html" class="btn">Explore</a>
+      </div>
+      <div class="card card-2">
+          <h3>Upcycling </h3>
+          <p>Upcycle your excess waste by giving it to a local artist, who can transform it into something new and creative.
+               You’ll only pay for the labor, and your discarded materials will get a fresh start as unique products, 
+               turning waste into art while supporting local talent.</p>
+          <a href="recycle.html" class="btn">Explore</a>
+      </div>
+      <div class="card card-3">
+          <h3>Sell</h3>
+          <p>Sell your items directly to other customers, whether it's raw waste like wood, bricks, cement, 
+              or finished products like clothing, shoes, and more. You can even sell electronic waste.
+               By doing so, you'll not only clear out unwanted items but also provide valuable resources to others,
+                benefiting the community as resources become increasingly scarce.</p>
+          <a href="sell.html" class="btn">Explore</a>
+      </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section id="reviews">
+  <h2>Customer Reviews</h2>
+  <div class="review">
+      <div class="review-header">
+          <img src="customer1.jpeg" alt="Customer 1" class="review-image">
+          <div class="review-details">
+              <h3>Trupti Tadkar</h3>
+              <div class="stars">
+                  <img src="review.jpeg" alt="4 Stars">
+              </div>
+              <p>Great product! Helped me save a lot of money and it's eco-friendly.</p>
+          </div>
+      </div>
+  </div>
+  <div class="review">
+      <div class="review-header">
+          <img src="customer2.jpeg" alt="Customer 2" class="review-image">
+          <div class="review-details">
+              <h3>Masira firdous</h3>
+              <div class="stars">
+                  <img src="review.jpeg" alt="5 Stars">
+              </div>
+              <p>Excellent service and quality. Highly recommend!</p>
+          </div>
+      </div>
+  </div>
+  <div class="review">
+      <div class="review-header">
+          <img src="customer3.jpeg" alt="Customer 3" class="review-image">
+          <div class="review-details">
+              <h3>Syed Ammar</h3>
+              <div class="stars">
+                  <img src="review.jpeg" alt="4 Stars">
+              </div>
+              <p>Really unique products. I'm definitely buying again.</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+</div>
+  <footer>
+    <p>&copy; 2024 R3Trade. All rights reserved.</p>
+    <p><a href="terms-of-service.html">Privacy Policy & Term Of Services</a></p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scriptnew.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.querySelector(".menu-toggle");
+      const sideMenu = document.getElementById("mobileMenu");
+      const closeBtn = document.getElementById("closeMenu");
+
+      if (toggleBtn && sideMenu && closeBtn) {
+        toggleBtn.addEventListener("click", () => {
+          sideMenu.classList.add("show");
+          toggleBtn.classList.add("hide");
+        });
+
+        closeBtn.addEventListener("click", () => {
+          sideMenu.classList.remove("show");
+          toggleBtn.classList.remove("hide");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!sideMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+            sideMenu.classList.remove("show");
+            toggleBtn.classList.remove("hide");
+          }
+        });
+      }
+
+      // 🧠 Check for artist role
+      const userRole = localStorage.getItem("userRole");
+      if (userRole === "artist") {
+        const postDesktop = document.getElementById("postMenuDesktop");
+        const postMobile = document.getElementById("postMenuMobile");
+        if (postDesktop) postDesktop.style.display = "block";
+        if (postMobile) postMobile.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
